@@ -1,9 +1,10 @@
 wrk:
   build: .
 
-  volumes:
-   - test/scripts:/scripts
-   - test/data:/data
+  # Not working :(
+  # volumes:
+  #  - ./test/scripts/:/scripts/
+  #  - ./test/data/:/data/
 
   links:
    - application

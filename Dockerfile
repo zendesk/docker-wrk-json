@@ -32,7 +32,7 @@ RUN apt-get install -y curl \
                        liblua5.1-dev
 
 # Install Luarocks - a lua package manager
-RUN curl http://keplerproject.github.io/luarocks/releases/luarocks-2.2.2.tar.gz -O &&\
+RUN curl https://keplerproject.github.io/luarocks/releases/luarocks-2.2.2.tar.gz -O &&\
     tar -xzvf luarocks-2.2.2.tar.gz &&\
     cd luarocks-2.2.2 &&\
     ./configure &&\
@@ -52,3 +52,6 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN ulimit -c -m -s -t unlimited
 
 ENV DEBIAN_FRONTEND=newt
+
+COPY test/scripts /scripts
+COPY test/data /data
