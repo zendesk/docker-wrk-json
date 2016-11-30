@@ -1,4 +1,4 @@
-# Docker WRK JSON Environment
+# Portable benchmarking using wrk and Docker.
 
 This repository contains **Dockerfile** of [Debian](https://www.debian.org/) for [Docker](https://www.docker.com/)'s 
 [automated build](https://registry.hub.docker.com/u/czerasz/monit-base/) published to the public 
