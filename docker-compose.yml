@@ -12,6 +12,9 @@ wrk:
   hostname: wrk
   domainname: wrk.local
 
+  extra_hosts:
+    - "dockerhost:${localhost_ip}"
+
 application:
   image: czerasz/http-debugger
 

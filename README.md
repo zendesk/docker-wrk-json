@@ -23,7 +23,7 @@ Clone this repository change into the directory.
 
 Start all containers:
 
-    docker-compose build && docker-compose run wrk bash
+    ./startdocker.sh
     
 ### Validate a single request
 
@@ -55,6 +55,11 @@ As soon as you start the benchmark the application container logs should output 
       12711 requests in 15.08s, 5.30MB read
     Requests/sec:    842.92
     Transfer/sec:    359.72KB
+    
+    
+If you need to test a service locally on your host OS, then you can use the `dockerhost` hostname we've injected into the container:
+
+    curl -X POST -H 'Content-Type: application/json' -d @data/page_view.sample.json http://dockerhost:8889/event -v
     
 ### Tweaking tests
 

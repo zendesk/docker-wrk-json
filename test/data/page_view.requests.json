@@ -1,6 +1,6 @@
 [
   {
-    "path": "/test",
+    "path": "/event",
     "body":
     {
       "account_id": 1,
