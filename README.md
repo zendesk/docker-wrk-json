@@ -68,3 +68,38 @@ can make more than one request, just add another object if you wish!
 
 Note that the scripts are copied into the container as the origin implementation using a shared docker-compose volume was not working. 
 This means we need to build before we run each time. Hopefully we can fix this in future.  
+
+### Setup on bare metal
+
+* Download this repo as a zip file and upload to your instance.
+* Extract: `sudo apt-get install zip && unzip <archive>`
+* install wrk / lua etc. (esentially everything the `Dockerfile` in this project does):
+```
+sudo apt-get update -y
+sudo apt-get install -y git make build-essential libssl-dev
+git clone https://github.com/wg/wrk.git &&\
+    cd wrk &&\
+    sudo make &&\
+    sudo mv wrk /usr/local/bin
+
+sudo apt-get install -y curl \
+                        make \
+                        unzip \
+                        lua5.1 \
+                        liblua5.1-dev
+                        
+sudo curl https://keplerproject.github.io/luarocks/releases/luarocks-2.2.2.tar.gz -O &&\
+    sudo tar -xzvf luarocks-2.2.2.tar.gz &&\
+    cd luarocks-2.2.2 &&\
+    sudo ./configure &&\
+    sudo make build &&\
+    sudo make install
+
+sudo luarocks install lua-cjson
+
+sudo apt-get clean
+sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+```
+You may need to adjust the path in the lua script to point at the correct directory. 
+
+
